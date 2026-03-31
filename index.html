@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>耀聖資訊科技 | 智慧醫療整合專家</title>
+  <!-- Google Fonts + 現代化字型體系 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1A2C3E;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* 自訂變數 */
+    :root {
+      --primary: #0066B3;    /* 專業醫療藍 */
+      --primary-dark: #004b8f;
+      --accent: #00A0B0;      /* 科技感青綠 */
+      --gray-light: #F5F7FA;
+      --gray-border: #E2E8F0;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+      --radius-card: 1.5rem;
+    }
+
+    /* 通用容器 */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    /* 標題區塊 */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-subtitle {
+      color: #5A6E7F;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-bottom: 3rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 1.2rem;
+    }
+    .badge {
+      background: rgba(0,102,179,0.1);
+      color: var(--primary-dark);
+      border-radius: 100px;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    /* 導航欄 (現代半透明+毛玻璃) */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 0.8rem 0;
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0066B3 0%, #0095b3 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.01em;
+    }
+    .logo span {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #5A6E7F;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e2f3d;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .btn-outline-light {
+      background: transparent;
+      border: 1px solid var(--primary);
+      padding: 0.5rem 1.2rem;
+      border-radius: 2rem;
+      color: var(--primary);
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-outline-light:hover {
+      background: var(--primary);
+      color: white;
+    }
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero 區塊 — 科技感動態背景 */
+    .hero {
+      background: linear-gradient(125deg, #F0F9FF 0%, #E9F4FA 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 0 5rem;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: white;
+      box-shadow: var(--shadow-sm);
+      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #33475b;
+      max-width: 90%;
+      margin-bottom: 2rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+      box-shadow: 0 4px 8px rgba(0,102,179,0.2);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: white;
+      color: var(--primary);
+      padding: 0.9rem 2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--gray-border);
+      transition: 0.2s;
+    }
+    .hero-stats {
+      flex: 0.8;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-md);
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    /* 公告區塊 — 卡片式現代輪播感 */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+    .news-card {
+      background: white;
+      border-radius: var(--radius-card);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-border);
+      transition: all 0.25s ease;
+    }
+    .news-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: #cbdde9;
+    }
+    .news-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .news-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0.75rem 0 0.5rem;
+      line-height: 1.4;
+    }
+    .news-badge {
+      background: #FEF3C7;
+      color: #B45309;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      display: inline-block;
+      margin-bottom: 0.7rem;
+    }
+    .critical {
+      background: #FFE4E2;
+      color: #B91C1C;
+    }
+
+    /* 服務據點 + 服務項目 */
+    .services {
+      background: var(--gray-light);
+    }
+    .service-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .service-item {
+      background: white;
+      flex: 1;
+      min-width: 220px;
+      padding: 2rem 1.5rem;
+      border-radius: 1.8rem;
+      text-align: center;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .service-item i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .service-item h3 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 合作 & 聯絡區塊 */
+    .partner-section {
+      background: linear-gradient(110deg, #1A2C3E 0%, #1F3A4B 100%);
+      color: white;
+      border-radius: 2rem;
+      margin: 2rem 0 3rem;
+      padding: 3rem 2rem;
+    }
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: center;
+    }
+    .contact-details {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      padding: 1.2rem 1.8rem;
+    }
+    .footer {
+      background: #0F2029;
+      color: #B0C4DE;
+      padding: 3rem 0 2rem;
+      border-top: 1px solid #1e3a4d;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 0.8rem;
+      border-top: 1px solid #1e3a4d;
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+        background: white;
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .hero-grid {
+        flex-direction: column;
+      }
+      .hero-stats {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo">
+      <h1>耀聖資訊科技</h1>
+      <span>RealSun Information Technology</span>
+    </div>
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#">首頁</a>
+      <a href="#news">最新消息</a>
+      <a href="#services">服務項目</a>
+      <a href="#support">支援中心</a>
+      <a href="#contact">聯絡我們</a>
+      <a href="#" class="btn-outline-light">客戶登入</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero 區塊 -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-shield-alt"></i> 醫療資訊安全領導品牌
+        </div>
+        <h1>智慧醫療<br>全方位整合專家</h1>
+        <p>深耕診所與醫療機構資訊系統，結合健保最新規範、資安防護與遠傳雲端戰略合作，引領醫療數位轉型。</p>
+        <div class="btn-group">
+          <a href="#" class="btn-primary">預約諮詢 <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="btn-secondary">知識庫探索</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-number">30+</div>
+        <div>年產業經驗</div>
+        <div class="stat-number mt-2">3,000+</div>
+        <div>醫療院所合作</div>
+        <div class="stat-number mt-2">24/7</div>
+        <div>到府維修・技術支援</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新公告區塊 (動態嵌入從原網站擷取之重要資訊) -->
+  <section id="news">
+    <div class="container">
+      <div class="badge">即時公告</div>
+      <h2 class="section-title">重要訊息與資安動態</h2>
+      <div class="section-subtitle">掌握最新健保政策、系統更新與防護建議</div>
+      <div class="news-grid" id="newsGrid">
+        <!-- 新聞資料將由JS動態生成，保留原始內容並視覺增強 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 服務項目 + 到府維修 產品保固說明 -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="badge">核心服務</div>
+      <h2 class="section-title">專業．即時．前瞻</h2>
+      <div class="section-subtitle">從診所系統到資安備份，耀聖提供完整生態系支援</div>
+      <div class="service-cards">
+        <div class="service-item"><i class="fas fa-laptop-medical"></i><h3>醫療資訊系統</h3><p>HIS / 雲端病歷</p></div>
+        <div class="service-item"><i class="fas fa-shield-virus"></i><h3>資安備份方案</h3><p>遠端備份・勒索防護</p></div>
+        <div class="service-item"><i class="fas fa-truck"></i><h3>到府維修服務</h3><p>工程師即時到點支援</p></div>
+        <div class="service-item"><i class="fas fa-hand-holding-usd"></i><h3>產品有限保固</h3><p>原廠級保固條款</p></div>
+        <div class="service-item"><i class="fas fa-chalkboard-user"></i><h3>教育訓練</h3><p>國健署篩檢系統操作</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 耀聖與遠傳合作 + 客戶服務中心資訊 -->
+  <div class="container">
+    <div class="partner-section">
+      <div class="contact-flex">
+        <div>
+          <i class="fas fa-handshake fa-2x" style="color:#7AB2D3;"></i>
+          <h3 style="margin-top:0.5rem;">耀聖 × 遠傳電信 緊密合作</h3>
+          <p>智慧醫療雲端戰略聯盟，強化5G遠距照護與資安聯防</p>
+        </div>
+        <div>
+          <i class="fas fa-headset fa-2x"></i>
+          <h3>客戶服務中心</h3>
+          <p>總公司 (02)8512-3363<br>服務據點查詢｜到府維修預約</p>
+          <a href="#" style="color:white; text-decoration:underline;">點此查詢服務據點 <i class="fas fa-external-link-alt"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 支援/知識庫 與 產品保固說明 -->
+  <section id="support">
+    <div class="container">
+      <div class="badge">支援服務</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
+        <div style="flex:1;">
+          <h3><i class="fas fa-database"></i> 逛逛耀聖知識庫</h3>
+          <p>了解常見問題解答、系統更新指南、健保申報流程。或寄電子郵件至 <strong>support@realsun.com.tw</strong> 取得額外支援。</p>
+          <a href="#" class="btn-primary" style="display:inline-block; margin-top:1rem;">前往知識庫 →</a>
+        </div>
+        <div style="flex:1; background: #F8FAFE; border-radius: 2rem; padding: 1.5rem;">
+          <h3><i class="fas fa-clipboard-list"></i> 產品有限保固說明</h3>
+          <p>硬體設備提供一年保固，軟體版本更新支援服務，詳細條款請洽業務專員或下載保固說明書。</p>
+          <p style="margin-top:0.5rem; font-size:0.85rem;">* 維護合約客戶享有優先到府服務</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 聯絡區塊與服務據點地圖模擬 -->
+  <section id="contact" style="background: #F1F5F9;">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="badge">聯絡我們</div>
+        <h2 class="section-title">讓我們協助您數位轉型</h2>
+        <div class="contact-details" style="justify-content: center; margin: 2rem 0;">
+          <div class="contact-card"><i class="fas fa-phone-alt"></i> 總機 (02)8512-3363</div>
+          <div class="contact-card"><i class="fas fa-envelope"></i> info@realsun.com.tw</div>
+          <div class="contact-card"><i class="fas fa-map-marker-alt"></i> 新北市三重區重新路五段(總部)</div>
+        </div>
+        <div style="background:#E2E8F0; border-radius: 2rem; padding: 1rem; max-width: 600px; margin: 0 auto;">
+          <i class="fas fa-location-dot"></i> 全台服務據點：台北・桃園・台中・台南・高雄
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+      <div>
+        <h3 style="color:white;">耀聖資訊科技股份有限公司</h3>
+        <p style="margin-top:0.5rem;">© 2026 RealSun Information Technology Co., Ltd.<br>本網站響應式設計，最佳體驗現代瀏覽器。</p>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul style="list-style: none; margin-top:0.5rem;">
+          <li><a href="#" style="color:#9bb7d0;">隱私權政策</a></li>
+          <li><a href="#" style="color:#9bb7d0;">到府維修服務說明</a></li>
+          <li><a href="#" style="color:#9bb7d0;">資安通報</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>追蹤耀聖</h4>
+        <div style="display: flex; gap: 1rem; font-size: 1.5rem;">
+          <i class="fab fa-facebook"></i> <i class="fab fa-line"></i> <i class="fab fa-linkedin"></i>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>本網站依據原官網公開資訊整合，提供現代化醫療資訊形象。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 行動版選單
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  mobileBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // 最新公告資料 — 忠於原網站公告 (包含資安警訊、健保彙整、合作等)
+  const announcements = [
+    { date: "2026-03-01", title: "【耀聖因應】因應115年健保重要變動與彙整", importance: "high", tag: "健保規範" },
+    { date: "2026-02-28", title: "耀聖與遠傳展開緊密合作訊息公告｜共創智慧醫療新紀元", importance: "info", tag: "策略聯盟" },
+    { date: "2025-12-30", title: "【重要公告】115年1月1日 健保署新功能上線更版提醒", importance: "high", tag: "系統更新" },
+    { date: "2025-12-29", title: "【國健署】糞便抗原檢測胃幽門螺旋桿菌服務系統操作（標準版、旗艦版）", importance: "normal", tag: "教育訓練" },
+    { date: "2025-06-25", title: "資安警訊！診所也開始成為駭客勒索目標，請診所務必落實備份！尤其是遠端備份！", importance: "critical", tag: "資安威脅" }
+  ];
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr);
+    return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+  }
+
+  function getBadgeClass(importance) {
+    if(importance === 'critical') return 'critical';
+    if(importance === 'high') return '';
+    return '';
+  }
+
+  function getBadgeText(importance) {
+    if(importance === 'critical') return '🚨 緊急';
+    if(importance === 'high') return '⚠️ 重要';
+    return '📌 一般';
+  }
+
+  const newsContainer = document.getElementById('newsGrid');
+  if(newsContainer) {
+    announcements.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'news-card';
+      card.innerHTML = `
+        <div class="news-date">${formatDate(item.date)}</div>
+        <div class="news-badge ${getBadgeClass(item.importance)}">${getBadgeText(item.importance)}  ${item.tag}</div>
+        <div class="news-title">${item.title}</div>
+        <div style="margin-top:1rem; font-size:0.85rem; color:#2c6280;"><i class="fas fa-chevron-right"></i> 詳細資訊</div>
+      `;
+      newsContainer.appendChild(card);
+    });
+    // 加一個額外提醒關於到府維修與客服
+    const extraCard = document.createElement('div');
+    extraCard.className = 'news-card';
+    extraCard.style.background = "#EFF6FF";
+    extraCard.innerHTML = `
+      <div class="news-date">即時服務</div>
+      <div class="news-title"><i class="fas fa-tools"></i> 到府維修服務・客戶服務中心資訊</div>
+      <p style="margin:0.7rem 0;">全台工程師到點支援，產品有限保固說明，歡迎查詢您方便的服務據點。</p>
+      <div><i class="fas fa-map-pin"></i> 點此查詢最近服務站</div>
+    `;
+    newsContainer.appendChild(extraCard);
+  }
+
+  // 平滑滾動 (選單點擊錨點)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if(targetId === "#") return;
+      const targetElement = document.querySelector(targetId);
+      if(targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+        if(navLinks.classList.contains('active')) navLinks.classList.remove('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
